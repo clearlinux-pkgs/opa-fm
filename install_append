@@ -1,0 +1,45 @@
+mkdir -p %{buildroot}/usr/lib/systemd/system
+install Esm/ib/src/linux/startup/opafm.service %{buildroot}/usr/lib/systemd/system/
+
+mkdir -p %{buildroot}/usr/lib/opa-fm
+install Esm/ib/src/linux/startup/opafmctrl \
+	Esm/ib/src/linux/startup/build.VIEO_HOST.release/opafmd \
+	%{buildroot}/usr/lib/opa-fm/
+
+mkdir -p %{buildroot}/usr/share/opa-fm
+install Esm/ib/src/linux/startup/opafm.xml \
+	Esm/ib/src/linux/startup/opafm_pp.xml \
+	Esm/ib/src/linux/startup/opafm_src.xml \
+	%{buildroot}/usr/share/opa-fm/
+
+mkdir -p %{buildroot}/usr/lib/opa-fm/bin
+install Esm/ib/src/linux/startup/fm_capture \
+	Esm/ib/src/linux/fm_cmd/build.VIEO_HOST.release/fm_cmd \
+	Esm/ib/src/linux/startup/fm_cmdall \
+	Esm/ib/test/smi/sm/build.VIEO_HOST.release/smpoolsize \
+	Esm/ib/src/linux/startup/fm_config/opafmconfigpp \
+	Esm/ib/src/linux/opafmvf/build.VIEO_HOST.release/opafmvf \
+	Esm/ib/src/linux/startup/fm_config/build.VIEO_HOST.release/config_check \
+	Esm/ib/src/linux/startup/fm_config/build.VIEO_HOST.release/config_convert \
+	Esm/ib/src/linux/startup/fm_config/config_diff \
+	Esm/ib/src/linux/startup/fm_config/config_generate \
+	Esm/ib/src/linux/startup/opafm \
+	Esm/ib/src/linux/startup/build.VIEO_HOST.release/opaxmlextract \
+	Esm/ib/src/linux/startup/build.VIEO_HOST.release/opaxmlfilter \
+	%{buildroot}/usr/lib/opa-fm/bin/
+
+mkdir -p %{buildroot}/usr/lib/opa-fm/runtime
+install Esm/ib/src/build.VIEO_HOST.release/sm \
+	Esm/ib/src/fe/fe_proc/build.VIEO_HOST.release/fe \
+	%{buildroot}/usr/lib/opa-fm/runtime
+
+mkdir -p %{buildroot}/usr/share/man/man8
+install Esm/ib/man/opafmcmd.8 \
+	Esm/ib/man/opafmcmdall.8 \
+	%{buildroot}/usr/share/man/man8/
+
+mkdir -p %{buildroot}/usr/sbin
+ln -sf ../lib/opa-fm/bin/fm_cmd %{buildroot}/usr/sbin/
+ln -sf ../lib/opa-fm/bin/fm_cmdall %{buildroot}/usr/sbin/
+ln -sf ../lib/opa-fm/bin/opafmconfigpp %{buildroot}/usr/sbin/
+ln -sf ../lib/opa-fm/bin/opafmvf %{buildroot}/usr/sbin/

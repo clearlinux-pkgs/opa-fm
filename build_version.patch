@@ -1,0 +1,22 @@
+diff --git a/Esm/Makerules.project b/Esm/Makerules.project
+index c388370..fd649d8 100755
+--- a/Esm/Makerules.project
++++ b/Esm/Makerules.project
+@@ -186,7 +186,7 @@ endif # VXWORKS
+ #endif # DARWIN
+ ifeq "$(BUILD_TARGET_OS)" "LINUX"
+ ifndef BUILD_TARGET_OS_VERSION
+-$(error BUILD_TARGET_OS_VERSION not defined)
++BUILD_TARGET_OS_VERSION=VERSION
+ endif
+ ICS_KERNEL_CONF_FILE:=$(TL_DIR)/Makerules/LINUX/$(BUILD_TARGET).$(BUILD_TARGET_OS_VENDOR).$(BUILD_TARGET_OS_VERSION).h
+ endif # LINUX
+diff --git a/Esm/expected.err b/Esm/expected.err
+index bd1de3b..d6b0f64 100644
+--- a/Esm/expected.err
++++ b/Esm/expected.err
+@@ -1,3 +1,4 @@
+ U tmsTarget/src/tms/webif/webfiles.cmuX/html/cmu/chassis/esmcfgfiletransferfailed.html
+ U tmsTarget/src/tms/webif/webfiles.cmu9000/html/cmu/chassis/esmcfgfiletransferfailed.html
+ U target/tmsTarget/src/tms/webif/webfiles.STL2/html/cmu/chassis/esmcfgfiletransferfailed.html
++GCC_IGNORE_WERROR=1
