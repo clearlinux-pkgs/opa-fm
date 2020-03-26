@@ -4,12 +4,12 @@
 #
 Name     : opa-fm
 Version  : 10.10.0.0.444
-Release  : 1
+Release  : 2
 URL      : https://github.com/intel/opa-fm/archive/v10.10.0.0.444.tar.gz
 Source0  : https://github.com/intel/opa-fm/archive/v10.10.0.0.444.tar.gz
 Summary  : OPA Fabric Manager
 Group    : Development/Tools
-License  : BSD-3-Clause Intel
+License  : BSD-3-Clause
 Requires: opa-fm-bin = %{version}-%{release}
 Requires: opa-fm-data = %{version}-%{release}
 Requires: opa-fm-license = %{version}-%{release}
@@ -86,7 +86,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572899354
+export SOURCE_DATE_EPOCH=1585257976
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -99,7 +99,7 @@ make  %{?_smp_mflags}  || cd Esm && ./fmbuild
 
 
 %install
-export SOURCE_DATE_EPOCH=1572899354
+export SOURCE_DATE_EPOCH=1585257976
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/opa-fm
 cp %{_builddir}/opa-fm-10.10.0.0.444/Esm/debian/copyright %{buildroot}/usr/share/package-licenses/opa-fm/31b5b4b9993aab20f8d12d5a46d638e962b77f9c
@@ -110,15 +110,18 @@ cp %{_builddir}/opa-fm-10.10.0.0.444/LICENSE %{buildroot}/usr/share/package-lice
 ## install_append content
 mkdir -p %{buildroot}/usr/lib/systemd/system
 install Esm/ib/src/linux/startup/opafm.service %{buildroot}/usr/lib/systemd/system/
+
 mkdir -p %{buildroot}/usr/lib/opa-fm
 install Esm/ib/src/linux/startup/opafmctrl \
 Esm/ib/src/linux/startup/build.VIEO_HOST.release/opafmd \
 %{buildroot}/usr/lib/opa-fm/
+
 mkdir -p %{buildroot}/usr/share/opa-fm
 install Esm/ib/src/linux/startup/opafm.xml \
 Esm/ib/src/linux/startup/opafm_pp.xml \
 Esm/ib/src/linux/startup/opafm_src.xml \
 %{buildroot}/usr/share/opa-fm/
+
 mkdir -p %{buildroot}/usr/lib/opa-fm/bin
 install Esm/ib/src/linux/startup/fm_capture \
 Esm/ib/src/linux/fm_cmd/build.VIEO_HOST.release/fm_cmd \
@@ -134,19 +137,22 @@ Esm/ib/src/linux/startup/opafm \
 Esm/ib/src/linux/startup/build.VIEO_HOST.release/opaxmlextract \
 Esm/ib/src/linux/startup/build.VIEO_HOST.release/opaxmlfilter \
 %{buildroot}/usr/lib/opa-fm/bin/
+
 mkdir -p %{buildroot}/usr/lib/opa-fm/runtime
 install Esm/ib/src/build.VIEO_HOST.release/sm \
 Esm/ib/src/fe/fe_proc/build.VIEO_HOST.release/fe \
 %{buildroot}/usr/lib/opa-fm/runtime
+
 mkdir -p %{buildroot}/usr/share/man/man8
 install Esm/ib/man/opafmcmd.8 \
 Esm/ib/man/opafmcmdall.8 \
 %{buildroot}/usr/share/man/man8/
-mkdir -p %{buildroot}/usr/sbin
-ln -sf ../lib/opa-fm/bin/fm_cmd %{buildroot}/usr/sbin/
-ln -sf ../lib/opa-fm/bin/fm_cmdall %{buildroot}/usr/sbin/
-ln -sf ../lib/opa-fm/bin/opafmconfigpp %{buildroot}/usr/sbin/
-ln -sf ../lib/opa-fm/bin/opafmvf %{buildroot}/usr/sbin/
+
+mkdir -p %{buildroot}/usr/bin
+ln -sf ../lib/opa-fm/bin/fm_cmd %{buildroot}/usr/bin/
+ln -sf ../lib/opa-fm/bin/fm_cmdall %{buildroot}/usr/bin/
+ln -sf ../lib/opa-fm/bin/opafmconfigpp %{buildroot}/usr/bin/
+ln -sf ../lib/opa-fm/bin/opafmvf %{buildroot}/usr/bin/
 ## install_append end
 
 %files
@@ -171,10 +177,10 @@ ln -sf ../lib/opa-fm/bin/opafmvf %{buildroot}/usr/sbin/
 
 %files bin
 %defattr(-,root,root,-)
-/usr/sbin/fm_cmd
-/usr/sbin/fm_cmdall
-/usr/sbin/opafmconfigpp
-/usr/sbin/opafmvf
+/usr/bin/fm_cmd
+/usr/bin/fm_cmdall
+/usr/bin/opafmconfigpp
+/usr/bin/opafmvf
 
 %files data
 %defattr(-,root,root,-)

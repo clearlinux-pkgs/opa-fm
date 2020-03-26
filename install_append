@@ -38,8 +38,8 @@ install Esm/ib/man/opafmcmd.8 \
 	Esm/ib/man/opafmcmdall.8 \
 	%{buildroot}/usr/share/man/man8/
 
-mkdir -p %{buildroot}/usr/sbin
-ln -sf ../lib/opa-fm/bin/fm_cmd %{buildroot}/usr/sbin/
-ln -sf ../lib/opa-fm/bin/fm_cmdall %{buildroot}/usr/sbin/
-ln -sf ../lib/opa-fm/bin/opafmconfigpp %{buildroot}/usr/sbin/
-ln -sf ../lib/opa-fm/bin/opafmvf %{buildroot}/usr/sbin/
+mkdir -p %{buildroot}/usr/bin
+ln -sf ../lib/opa-fm/bin/fm_cmd %{buildroot}/usr/bin/
+ln -sf ../lib/opa-fm/bin/fm_cmdall %{buildroot}/usr/bin/
+ln -sf ../lib/opa-fm/bin/opafmconfigpp %{buildroot}/usr/bin/
+ln -sf ../lib/opa-fm/bin/opafmvf %{buildroot}/usr/bin/
