@@ -4,7 +4,7 @@
 #
 Name     : opa-fm
 Version  : 10.10.0.0.444
-Release  : 2
+Release  : 3
 URL      : https://github.com/intel/opa-fm/archive/v10.10.0.0.444.tar.gz
 Source0  : https://github.com/intel/opa-fm/archive/v10.10.0.0.444.tar.gz
 Summary  : OPA Fabric Manager
