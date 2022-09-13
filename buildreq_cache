@@ -1,7 +1,5 @@
-10.10.0.0.444
+10.11.2.0.3
 expat-dev
 openssl-dev
 pkgconfig(json-c)
 pkgconfig(zlib)
-util-linux
-zlib-dev
