@@ -5,9 +5,9 @@
 #
 Name     : opa-fm
 Version  : 10.11.2.0.3
-Release  : 5
-URL      : https://github.com/intel/opa-fm/archive/v10.11.2.0.3/opa-fm-10.11.2.0.3.tar.gz
-Source0  : https://github.com/intel/opa-fm/archive/v10.11.2.0.3/opa-fm-10.11.2.0.3.tar.gz
+Release  : 6
+URL      : https://github.com/cornelisnetworks/opa-fm/archive/v10.11.2.0.3/opa-fm-10.11.2.0.3.tar.gz
+Source0  : https://github.com/cornelisnetworks/opa-fm/archive/v10.11.2.0.3/opa-fm-10.11.2.0.3.tar.gz
 Summary  : OPA Fabric Manager
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -90,7 +90,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1693509361
+export SOURCE_DATE_EPOCH=1693584284
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -103,7 +103,7 @@ make  %{?_smp_mflags}  || cd Esm && ./fmbuild
 
 
 %install
-export SOURCE_DATE_EPOCH=1693509361
+export SOURCE_DATE_EPOCH=1693584284
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/opa-fm
 cp %{_builddir}/opa-fm-%{version}/Esm/debian/copyright %{buildroot}/usr/share/package-licenses/opa-fm/31b5b4b9993aab20f8d12d5a46d638e962b77f9c || :
@@ -115,10 +115,10 @@ cp %{_builddir}/opa-fm-%{version}/LICENSE %{buildroot}/usr/share/package-license
 mkdir -p %{buildroot}/usr/lib/systemd/system
 install Esm/ib/src/linux/startup/opafm.service %{buildroot}/usr/lib/systemd/system/
 
-mkdir -p %{buildroot}/usr/lib/opa-fm
+mkdir -p %{buildroot}/usr/lib/opa-fm/bin
 install Esm/ib/src/linux/startup/opafmctrl \
 Esm/ib/src/linux/startup/build.VIEO_HOST.release/opafmd \
-%{buildroot}/usr/lib/opa-fm/
+%{buildroot}/usr/lib/opa-fm/bin/
 
 mkdir -p %{buildroot}/usr/share/opa-fm
 install Esm/ib/src/linux/startup/opafm.xml \
@@ -170,12 +170,12 @@ ln -sf ../lib/opa-fm/bin/opafmvf %{buildroot}/usr/bin/
 /usr/lib/opa-fm/bin/fm_cmdall
 /usr/lib/opa-fm/bin/opafm
 /usr/lib/opa-fm/bin/opafmconfigpp
+/usr/lib/opa-fm/bin/opafmctrl
+/usr/lib/opa-fm/bin/opafmd
 /usr/lib/opa-fm/bin/opafmvf
 /usr/lib/opa-fm/bin/opaxmlextract
 /usr/lib/opa-fm/bin/opaxmlfilter
 /usr/lib/opa-fm/bin/smpoolsize
-/usr/lib/opa-fm/opafmctrl
-/usr/lib/opa-fm/opafmd
 /usr/lib/opa-fm/runtime/fe
 /usr/lib/opa-fm/runtime/sm
 
