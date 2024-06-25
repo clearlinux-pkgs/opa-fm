@@ -1,4 +1,4 @@
-10.11.2.0.3
+10.12.1.0.6
 expat-dev
 openssl-dev
 pkgconfig(json-c)
